@@ -1,5 +1,8 @@
+NOT_ALLOCATED = "Not Allocated"
 # Function to allocate memory to blocks as
 # per worst fit algorithm
+
+
 def worst_fit(block_size, m, process_size, n):
 
     # Stores block id of the block
@@ -17,10 +20,10 @@ def worst_fit(block_size, m, process_size, n):
         # current process
         worst_index = -1
         for j in range(m):
-            if blockSize[j] >= process_size[i]:
+            if block_size[j] >= process_size[i]:
                 if worst_index == -1:
                     worst_index = j
-                elif blockSize[worst_index] < blockSize[j]:
+                elif block_size[worst_index] < block_size[j]:
                     worst_index = j
 
         # If we could find a block for
@@ -31,7 +34,7 @@ def worst_fit(block_size, m, process_size, n):
             allocation[i] = worst_index
 
             # Reduce available memory in this block.
-            blockSize[worst_index] -= process_size[i]
+            block_size[worst_index] -= process_size[i]
 
     print("Process No. Process Size Block no.")
     for i in range(n):
@@ -40,7 +43,8 @@ def worst_fit(block_size, m, process_size, n):
         if allocation[i] != -1:
             print(allocation[i] + 1)
         else:
-            print("Not Allocated")
+
+            print(NOT_ALLOCATED)
 
 # Function to allocate memory to
 # blocks as per First fit algorithm
@@ -75,7 +79,7 @@ def first_fit(block_size, m, process_size, n):
         if allocation[i] != -1:
             print(allocation[i] + 1)
         else:
-            print("Not Allocated")
+            print(NOT_ALLOCATED)
 
 
 # Function to allocate memory to blocks
@@ -117,7 +121,7 @@ def best_fit(block_size, m, process_size, n):
         if allocation[i] != -1:
             print(allocation[i] + 1)
         else:
-            print("Not Allocated")
+            print(NOT_ALLOCATED)
 
 
 if __name__ == '__main__':
